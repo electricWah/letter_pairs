@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>minimum viable product</title>
+		<style>
+			#pairDisplay {
+				font-size: 3em;
+				font-weight: bold;
+			}	
+
+			summary {
+				font-size: 1.5em;	
+			}
+		</style>
+	</head>
+	<body>
+		<script src="mvp.js" defer></script>
+
+		<div>
+			<div id="pairDisplay">Pair display here</div>
+			<label for="image_input">image:</label>
+			<input type="text" id="image_input" name="image_input" onkeypress="imageKeypress" />
+			<br>
+			<br>
+			<!-- <label for="sound_input">sound:</label> -->
+			<!-- <input type="text" id="sound_input" name="sound_input"/> -->
+			<!-- <br> -->
+			<button onclick="enter()">Enter</button>
+		</div>
+		<!-- <dialog open> -->
+		<!--   <p>Greetings, one and all!</p> -->
+		<!--   <form method="dialog"> -->
+		<!--     <button>OK</button> -->
+		<!--   </form> -->
+		<!-- </dialog> -->
+
+		<br>
+		<details ontoggle="updateExport()" open>
+			<summary>Export</summary>
+			<!-- <h2>Export</h2> -->
+			<!-- <button id="copyButton">Export to TSV (tab seperated values)</button> <br /> -->
+			<button id="copyButton">Press to copy</button> <br />
+			<textarea id="export" name="export" cols="30" rows="10" readonly></textarea>
+			<button id="exportFull" onclick="exportFull()">Export Full Table</button> <br />
+		</details>
+	</body>
+</html>
