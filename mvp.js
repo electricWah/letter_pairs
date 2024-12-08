@@ -21,9 +21,19 @@ for (let i of alphabet) {
 	}
 }
 
-let uncomplete_pairs = [...pairs];
-let complete_pairs = {};
+let uncomplete_pairs = localStorage.getItem('uncomplete_pairs');
+if (uncomplete_pairs != null) {
+	uncomplete_pairs = JSON.decode(uncomplete_pairs);
+} else {
+	uncomplete_pairs = [...pairs];
+}
 
+let complete_pairs = localStorage.getItem('complete_pairs');
+if (complete_pairs != null) {
+	complete_pairs = JSON.decode(complete_pairs);
+} else {
+	complete_pairs = {};
+}
 console.log(pairs)
 
 const pairDisplay = document.getElementById("pairDisplay")
@@ -58,6 +68,11 @@ function enter() {
 
 const COLSEP = ',';
 // const COLSEP = '\t';
+
+function update() {
+	localStorage.setItem('complete_pairs',JSON.stringify(complete_pairs))
+	localStorage.setItem('uncomplete_pairs',JSON.stringify(uncomplete_pairs))
+}
 
 const exportBox = document.getElementById('export');
 function updateExport() {
@@ -106,3 +121,11 @@ copyButton.onclick = async (e) => {
 	}
 	//alert('Export copied');
 };
+
+
+function clearStorage() {
+	if (confirm("This will completely clear all stored letter pairs and images! Are you sure?")
+		&& confirm("Are you *really* sure?")) {
+		localStorage.clear();	
+	};
+}
