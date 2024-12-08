@@ -63,6 +63,7 @@ function enter() {
 		console.log(uncomplete_pairs.length);
 	}
 	// updateExport()
+	update()
 	doPair();
 }
 
@@ -76,6 +77,7 @@ function update() {
 
 const exportBox = document.getElementById('export');
 function updateExport() {
+	update();
 	let output = '';
 	for (i in complete_pairs) {
 		output += i + COLSEP + complete_pairs[i] + '\n';
@@ -85,6 +87,7 @@ function updateExport() {
 }
 
 function exportFull () {
+	update();
 	let output = '';
 
 	for (let i of alphabet) {
