@@ -21,20 +21,27 @@ for (let i of alphabet) {
 	}
 }
 
-let uncomplete_pairs = localStorage.getItem('uncomplete_pairs');
-if (uncomplete_pairs != null) {
-	uncomplete_pairs = JSON.decode(uncomplete_pairs);
-} else {
-	uncomplete_pairs = [...pairs];
+let data = localStorage.getItem('data');
+let uncomplete_pairs; 
+let complete_pairs;
+
+function updateData () {
+	data = JSON.stringify({
+		complete_pairs: complete_pairs,
+		uncomplete_pairs: uncomplete_pairs
+	});
+	localStorage.setItem('data', data);
 }
 
-let complete_pairs = localStorage.getItem('complete_pairs');
-if (complete_pairs != null) {
-	complete_pairs = JSON.decode(complete_pairs);
+if (data != null) {
+	data = JSON.parse(data);
+	uncomplete_pairs = data.uncomplete_pairs;
+	complete_pairs = data.complete_pairs;
 } else {
+	// initialization
+	uncomplete_pairs = [...pairs];
 	complete_pairs = {};
 }
-console.log(pairs)
 
 const pairDisplay = document.getElementById("pairDisplay")
 
@@ -71,8 +78,9 @@ const COLSEP = ',';
 // const COLSEP = '\t';
 
 function update() {
-	localStorage.setItem('complete_pairs',JSON.stringify(complete_pairs))
-	localStorage.setItem('uncomplete_pairs',JSON.stringify(uncomplete_pairs))
+	updateData();
+	// localStorage.setItem('complete_pairs',JSON.stringify(complete_pairs))
+	// localStorage.setItem('uncomplete_pairs',JSON.stringify(uncomplete_pairs))
 }
 
 const exportBox = document.getElementById('export');
