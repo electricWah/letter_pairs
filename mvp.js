@@ -23,7 +23,6 @@ for (let i of alphabet) {
 
 let uncomplete_pairs = [...pairs];
 let complete_pairs = {};
-let skipped_pairs = [];
 
 console.log(pairs)
 
@@ -55,10 +54,6 @@ function enter() {
 	}
 	// updateExport()
 	doPair();
-}
-
-function skip() {
-	//currentPairIndex
 }
 
 const COLSEP = ',';
